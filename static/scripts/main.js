@@ -1,4 +1,4 @@
-window.mobileMediaQuery = '(max-width: 767px)';
+window.mobileMediaQuery = '(max-width: 400px)';
 
 document.addEventListener('click', trackCTAs);
 function trackCTAs(e) {
@@ -16,7 +16,7 @@ const slickSettings = {
   autoplay: true,
   responsive: [
     {
-      breakpoint: 767,
+      breakpoint: 400,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -36,7 +36,7 @@ $clientSlider.on('afterChange', () => {
 
 $(document).ready(function() {
   $('.clients-reset').click(function() {
-    $clientSlider.slick('slickGoTo', 0);
+    $('.client-slider').slick('slickGoTo', 0);
   });
 });
 
@@ -92,24 +92,24 @@ loadMore.addEventListener('click', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const timeout = 3000; 
+if (isFreeShipping()) {
+  showBanner();
+} 
 
-  setTimeout(setShippingStatus, timeout);
-  const freeShipping = getShippingStatus();
-  if (freeShipping) showBanner();
-});
+window.shipping = true;
+const timeout = 3000;
+setTimeout(checkShipping, timeout);
 
-function setShippingStatus() {
-  window.shipping = true;
+function checkShipping() {
+  if (isFreeShipping) showBanner();
+}
+
+function isFreeShipping() {
+  return Boolean(window.shipping);
 }
 
 function showBanner() {
   document.body.classList.add('show-banner');
-}
-
-function getShippingStatus() {
-  return Boolean(shipping);
 }
 
 
@@ -140,7 +140,7 @@ const quickAdd = document.querySelector('.gotd-cta');
 quickAdd.addEventListener('click', initStripe);
 
 function initStripe() {
-  if (window.location.pathname === '/bug-bash/gem-wizard' &&
+  if (window.location.pathname === '/' &&
       !window.StripeCheckout) {
     document.head.insertAdjacentHTML('beforeend', `<script src="https://checkout.stripe.com/checkout.js">`);
     addToCart();
@@ -157,7 +157,7 @@ function addToCart() {
 }
 
 
-// Move script not so close to footer onscroll
+
 document.querySelector('.add-back-to-top').addEventListener('click', () => {
   const backToTopScript = document.createElement('script');
   backToTopScript.src = './scripts/back-to-top.js';
