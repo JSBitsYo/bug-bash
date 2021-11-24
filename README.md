@@ -8,4 +8,8 @@
   - Visit `http://localhost:3000/` in your browser to see the Gem Wizard website.
   
 ## 📝 Notes
-Since this is a front-end focused debugging course, please focus only on the files in the `./static` folder. Some bugs are intentionally created server-side and are meant to be discovered on the client so resist the urger to peek in the `route.js` file. Or if you really want to, it's fine - go ahead!
+This the example website used in the JS Bits "Bug Bash" debugging course. Each lesson in the video course will introduce a bug in this codebase that you'll need to debug.
+
+Since this is a front-end-focused debugging course, please focus only on the files in the `./static` folder. Some bugs are intentionally created server-side and are meant to be discovered on the client so resist the urge to peek in the `route.js` file. Or if you really want to, it's fine - go ahead!
+
+Now let's get bashing! 🐛🔨
